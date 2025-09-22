@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Comment Snippets</title>
+    <style>
+        /* --- Basic Setup --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* --- Main Container --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        /* --- Snippet Box Styling --- */
+        .snippet-box {
+            background-color: #ffffff;
+            border: 1px solid #dcdcdc;
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .snippet-box:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* --- Header: Title and Button --- */
+        .snippet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .snippet-header h2 {
+            margin: 0;
+            font-size: 1.1em;
+            color: #1a1a1a;
+        }
+
+        /* --- Copy Button --- */
+        .copy-btn {
+            background-color: #e9ecef;
+            color: #495057;
+            border: 1px solid #ced4da;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: #d8dde2;
+        }
+
+        .copy-btn.copied {
+            background-color: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+
+        /* --- Snippet Content --- */
+        .snippet-content {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap; /* Ensures content wraps */
+            word-wrap: break-word; /* Breaks long words if needed */
+            color: #212529;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="snippet-box">
+            <div class="snippet-header">
+                <h2>Py:Bar Graph with Color Gradients</h2>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <pre class="snippet-content">import matplotlib.pyplot as plt
+import numpy as np
+years = ['2018', '2019', '2020', '2021', '2022']
+sales = [1500, 2000, 1800, 2200, 2100]
+n= len(years)
+cmap=plt.get_cmap('inferno')
+colors=[cmap(i/(n-1)) for i in range(n)]
+plt.figure(figsize=(8,5))
+bars=plt.bar(years, sales, color=colors)
+plt.xlabel('year')
+plt.ylabel('sales')
+plt.title('SALES BY YEAR')
+plt.show()
+     
+</pre>
+        </div>
+
+        <div class="snippet-box">
+            <div class="snippet-header">
+                <h2>Py:Histogram Graph</h2>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <pre class="snippet-content">import matplotlib.pyplot as plt
+import numpy as np
+marks = [55,70,35,66,54,40,20,30,98,75,45]
+bins = [10,20,30,40,50,60,70,80,90,100]
+
+
+plt.hist(marks, bins=7, alpha=0.6, edgecolor='black')
+
+plt.title('Histogram of Student marks')
+plt.xlabel('mark range')
+plt.ylabel('Students')
+
+plt.show()
+</pre>
+        </div>
+
+        <div class="snippet-box">
+            <div class="snippet-header">
+                <h2>Py:Box , Scatter ,Scatter</h2>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <pre class="snippet-content">import matplotlib.pyplot as plt
+
+box_data = [[10, 15, 10, 30, 20, 25], [12, 18, 14, 33, 22, 27]]
+
+x = [1, 2, 3, 4, 5]
+y = [5, 7, 6, 8, 7]
+
+labels = ['G1', 'G2', 'G3']
+men = [20, 34, 30]
+women = [25, 32, 34]
+
+plt.boxplot(box_data)
+plt.title('Box Plot')
+plt.show()
+
+plt.scatter(x, y)
+plt.title('Scatter Plot')
+plt.show()
+
+import numpy as np
+x_pos = np.arange(len(labels))
+
+plt.bar(x_pos, men, label='Men')
+plt.bar(x_pos, women, bottom=men, label='Women')
+plt.xticks(x_pos, labels)
+plt.title('Stacked Bar Plot')
+plt.legend()
+plt.show()
+</pre>
+        </div>
+        
+        <div class="snippet-box">
+            <div class="snippet-header">
+                <h2>Py:PIE Chart</h2>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <pre class="snippet-content">import matplotlib.pyplot as plt
+
+# Data for pie chart
+flavors = ['Chocolate', 'Vanilla', 'Strawberry', 'Mint', 'Cookie Dough', 'Pistachio']
+popularity = [30, 25, 15, 10, 12, 8]
+
+# Explode the largest slice (Chocolate)
+explode = [0.1, 0, 0, 0, 0, 0]
+
+# Colors for each slice
+colors =  ['lightcoral', 'lightskyblue', 'lightgreen', 'peachpuff', 'mediumpurple', 'pink']
+
+# Plot pie chart
+plt.figure(figsize=(8,8))
+plt.pie(popularity, labels=flavors, autopct='%1.1f%%', startangle=140,
+        explode=explode, colors=colors, shadow=True)
+
+plt.title("Favorite Flavors 🍦", fontsize=16)
+plt.axis('equal')  # Equal aspect ratio ensures pie is circular.
+
+plt.show()
+</pre>
+        </div>
+
+        <div class="snippet-box">
+            <div class="snippet-header">
+                <h2>AI : Implement Perception using Neural Networks</h2>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <pre class="snippet-content">
+   import numpy as np  #helps us do math with arrays
+
+class Perceptron:
+    def __init__(self, input_size, learning_rate=0.1, epochs=10):    #input_size = number of input features (e.g., 2 for AND gate inputs),learning_rate = how big a step we take when adjusting weights,epochs = number of times we run through all training data.
+        self.weights = np.zeros(input_size) #array of zeros for weights, if input_size is 2, weights = [0, 0].
+        self.bias = 0
+        self.lr = learning_rate
+        self.epochs = epochs
+    
+    def activation(self, x):
+        # Step activation function
+        return 1 if x >= 0 else 0         #If x (weighted sum + bias) is greater than or equal to 0, output 1, else output 0.
+    
+    def predict(self, x):
+        z = np.dot(x, self.weights) + self.bias
+        return self.activation(z)
+    
+    def train(self, X, y):        #X is the set of inputs (list of input vectors), y is the corresponding set of true labels (target outputs)
+        for _ in range(self.epochs):
+            for xi, target in zip(X, y):
+                output = self.predict(xi)
+                error = target - output
+                # Update weights and bias
+                self.weights += self.lr * error * xi
+                self.bias += self.lr * error
+
+# Training data for AND gate
+X = np.array([
+    [0, 0],
+    [0, 1],
+    [1, 0],
+    [1, 1]
+])
+
+y = np.array([0, 0, 0, 1])
+
+# Create perceptron object
+perceptron = Perceptron(input_size=2, learning_rate=0.1, epochs=10)
+
+# Train the perceptron
+perceptron.train(X, y)
+
+# Test perceptron
+print("Testing AND gate:")
+for x in X:
+    print(f"Input: {x} -> Output: {perceptron.predict(x)}")
+</pre>
+        </div>
+
+        <div class="snippet-box">
+            <div class="snippet-header">
+                <h2>AI: Maximize function using genetic algorithm</h2>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <pre class="snippet-content">popSize=6; numGen=5; chromLength=5;
+population=randi([0 1],popSize,chromLength);
+powers=2.^(chromLength-1:-1:0);
+fitnessFunc=@(x) x.^2;
+
+for gen=1:numGen
+    decodedPop=population*powers';
+    fitness=fitnessFunc(decodedPop);
+    [bestFit,bestIdx]=max(fitness);
+    fprintf('Gen %d: Best x=%d, fitness=%d\n', gen, decodedPop(bestIdx), bestFit);
+
+    cumProbs=cumsum(fitness/sum(fitness));
+    for i=1:popSize
+        population(i,:)=population(find(cumProbs>=rand,1),:);
+    end
+
+    for i=1:2:popSize-1
+        if rand<0.7
+            cp=randi([1 chromLength-1]);
+            population([i i+1],cp+1:end)=population([i+1 i],cp+1:end);
+        end
+    end
+
+    population=xor(population,rand(popSize,chromLength)<0.1);
+end </pre>
+        </div>
+
+        <div class="snippet-box">
+            <div class="snippet-header">
+                <h2>AI: Set Operation in fuzzy sets</h2>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <pre class="snippet-content">import numpy as np
+# Universe of discourse
+U = np.array([2, 3, 4, 5])
+
+# Membership values for sets A and B
+mu_A = np.array([1.0, 0.4, 0.6, 0.3])
+mu_B = np.array([0.3, 0.2, 0.6, 0.5])
+
+# Fuzzy Union (max)
+mu_union = np.maximum(mu_A, mu_B)
+
+# Fuzzy Intersection (min)
+mu_intersection = np.minimum(mu_A, mu_B)
+
+# Complement
+mu_A_comp = 1 - mu_A
+mu_B_comp = 1 - mu_B
+
+# Print results
+print("Universe:", U)
+print("A:", mu_A)
+print("B:", mu_B)
+print("A ∪ B:", mu_union)
+print("A ∩ B:", mu_intersection)
+print("A complement:", mu_A_comp)
+print("B complement:", mu_B_comp)
+
+
+</pre>
+        </div>
+
+        <div class="snippet-box">
+            <div class="snippet-header">
+                <h2>Data Manipulation of crisp & fuzzy sets</h2>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <pre class="snippet-content"># Simple implementation of fuzzy and crisp relations
+
+# Define sets
+X = ['x1', 'x2', 'x3']
+Y = ['y1', 'y2', 'y3']
+
+# Define a crisp relation (0 or 1 only)
+crisp_relation = [
+    [1, 0, 1],
+    [0, 1, 0],
+    [1, 0, 0]
+]
+
+# Define a fuzzy relation (values between 0 and 1)
+fuzzy_relation = [
+    [0.9, 0.1, 0.8],
+    [0.2, 0.7, 0.3],
+    [0.6, 0.4, 0.5]
+]
+
+# Function to print matrix nicely
+def print_matrix(matrix, title):
+    print(f"\n{title}")
+    for row in matrix:
+        print(["{:.2f}".format(val) for val in row])
+
+# Print both relations
+print_matrix(crisp_relation, "Crisp Relation")
+print_matrix(fuzzy_relation, "Fuzzy Relation")
+
+# Optional: Fuzzy relation composition (fuzzy_relation o fuzzy_relation)
+def fuzzy_composition(R1, R2):
+    n = len(R1)
+    result = [[0 for _ in range(n)] for _ in range(n)]
+
+    for i in range(n):
+        for j in range(n):
+            mins = [min(R1[i][k], R2[k][j]) for k in range(n)]
+            result[i][j] = max(mins)
+
+    return result
+
+# Compute and print fuzzy composition
+fuzzy_composed = fuzzy_composition(fuzzy_relation, crisp_relation)
+print_matrix(fuzzy_composed, "Fuzzy Relation Composition (R o R)")
+</pre>
+        </div>
+
+        <div class="snippet-box">
+            <div class="snippet-header">
+                <h2>Cloud: Case study on Twitter</h2>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <pre class="snippet-content">import matplotlib.pyplot as plt
+
+# Raw user counts (not categorized by label anymore in a histogram)
+user_counts = [
+    10_000_000,    # Tech & Gadgets
+    20_000_000,    # Sports & Esports
+    30_000_000,    # Pop Culture & Entertainment
+    50_000,        # Specialized Academic Research
+    2_000,         # Local Govt Announcements
+    1_000          # Corporate Internal Policies
+]
+
+plt.figure(figsize=(10, 6))
+plt.hist(user_counts, bins=5, color='skyblue', edgecolor='black', log=True)
+
+plt.xlabel('User Count (log scale bins)')
+plt.ylabel('Frequency')
+plt.title('Histogram of Estimated Twitter User Counts by Niche')
+plt.grid(True, which='both', linestyle='--', linewidth=0.5)
+
+plt.tight_layout()
+plt.show()
+</pre>
+        </div>
+
+        <div class="snippet-box">
+            <div class="snippet-header">
+                <h2>Cloud: handling Unstructured data</h2>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <pre class="snippet-content"># # Install and load required packages
+install.packages(c("tm", "SnowballC", "wordcloud", "dplyr"))
+library(tm)
+library(SnowballC)
+library(wordcloud)
+
+# Sample text
+texts <- c("I love R programming! #rstats", "Data Science is amazing.",
+           "Text mining in R is fun and powerful!", "Handling unstructured data is challenging but rewarding.")
+
+# Clean text and create a word frequency matrix
+corpus <- VCorpus(VectorSource(texts)) %>%
+  tm_map(content_transformer(tolower)) %>%
+  tm_map(removePunctuation) %>%
+  tm_map(removeNumbers) %>%
+  tm_map(removeWords, stopwords("english")) %>%
+  tm_map(stemDocument)
+
+# Create DTM and plot word cloud
+dtm <- DocumentTermMatrix(corpus)
+wordcloud(names(sort(colSums(as.matrix(dtm)), decreasing = TRUE)),
+          max.words = 50, colors = brewer.pal(8, "Dark2"))</pre>
+        </div>
+
+        <div class="snippet-box">
+            <div class="snippet-header">
+                <h2>Cloud: Storage Handling using R Map</h2>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <pre class="snippet-content"># library(leaflet)
+
+# Data with rounded latitude and longitude
+data <- data.frame(
+  name = c("New Delhi", "Mumbai", "Bengaluru", "Kolkata", "Chennai"),
+  lat = c(28.61, 19.08, 12.97, 22.57, 13.08),
+  lon = c(77.21, 72.88, 77.59, 88.36, 80.27)
+)
+
+print(
+  leaflet(data) %>%
+    addTiles() %>%
+    addMarkers(~lon, ~lat, popup = ~name)
+)</pre>
+        </div>
+
+       
+
+    <script>
+        // --- JavaScript for Copy Functionality ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const allCopyButtons = document.querySelectorAll('.copy-btn');
+
+            allCopyButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const snippetBox = event.target.closest('.snippet-box');
+                    const snippetContent = snippetBox.querySelector('.snippet-content');
+                    
+                    if (snippetContent) {
+                        const textToCopy = snippetContent.innerText;
+                        
+                        // Use the modern Navigator Clipboard API
+                        navigator.clipboard.writeText(textToCopy).then(() => {
+                            // Provide visual feedback
+                            event.target.textContent = 'Copied!';
+                            event.target.classList.add('copied');
+
+                            // Reset the button text after 2 seconds
+                            setTimeout(() => {
+                                event.target.textContent = 'Copy';
+                                event.target.classList.remove('copied');
+                            }, 2000);
+                        }).catch(err => {
+                            console.error('Failed to copy text: ', err);
+                            // You can add fallback logic here for older browsers if needed
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
