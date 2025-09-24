@@ -96,369 +96,364 @@
 
         <div class="snippet-box">
             <div class="snippet-header">
-                <h2>Py:Bar Graph with Color Gradients</h2>
+                <h2>Program 1 and 2</h2>
                 <button class="copy-btn">Copy</button>
             </div>
-            <pre class="snippet-content">import matplotlib.pyplot as plt
-import numpy as np
-years = ['2018', '2019', '2020', '2021', '2022']
-sales = [1500, 2000, 1800, 2200, 2100]
-n= len(years)
-cmap=plt.get_cmap('inferno')
-colors=[cmap(i/(n-1)) for i in range(n)]
-plt.figure(figsize=(8,5))
-bars=plt.bar(years, sales, color=colors)
-plt.xlabel('year')
-plt.ylabel('sales')
-plt.title('SALES BY YEAR')
-plt.show()
-     
+            <pre class="snippet-content">#1:display the namespace of the said class
+class myClass:
+    x= 10
+    y= 20
+    def greet(self):
+        return "Hello"
+print("Namespace of a class ")
+print(myClass.__dict__)
+
+
+#2: display the names of all arguments.
+def student(name,age,grade):
+    print("Name: ",name)
+    print("Age: ",age)
+    print("Grade: ",grade)
+
+print("Arguments: ",student.__code__.co_varnames)
+student("Alice",21,'A')
 </pre>
         </div>
 
         <div class="snippet-box">
             <div class="snippet-header">
-                <h2>Py:Histogram Graph</h2>
+                <h2>Program 3 & 4</h2>
                 <button class="copy-btn">Copy</button>
             </div>
-            <pre class="snippet-content">import matplotlib.pyplot as plt
-import numpy as np
-marks = [55,70,35,66,54,40,20,30,98,75,45]
-bins = [10,20,30,40,50,60,70,80,90,100]
+            <pre class="snippet-content">'''
+3.Write a Python class named Student with two attributes student_id, student_name. 
+(i)Add a new attribute student_class and display the entire attribute and their values of the said class. 
+(ii)Now remove the student_name attribute and display the entire attribute with values
+'''
+class Student:
+    def __init__(self, student_id, student_name):
+        self.student_id = student_id
+        self.student_name = student_name
 
+# Create an object
+s1 = Student(101, "Alice")
 
-plt.hist(marks, bins=7, alpha=0.6, edgecolor='black')
+# (i) Add a new attribute student_class
+s1.student_class = "MCA"
 
-plt.title('Histogram of Student marks')
-plt.xlabel('mark range')
-plt.ylabel('Students')
+# Display all attributes and values
+print("Attributes and values after adding student_class:")
+print(s1.__dict__)
 
-plt.show()
+# (ii) Remove the student_name attribute
+del s1.student_name
+
+# Display all attributes and values after deletion
+print("\nAttributes and values after removing student_name:")
+print(s1.__dict__)
+
+#program 4 : Password Validation
+import re
+def check_password(password):
+    if len(password) < 6 or len(password) > 16:
+        return False
+    if not re.search("[a-z]", password):
+        return False
+    if not re.search("[A-Z]", password):
+        return False
+    if not re.search("[0-9]", password):
+        return False
+    if not re.search("[$#@]", password):
+        return False
+    return True
+pwd = input("Enter your password: ")
+if check_password(pwd):
+    print("Valid Password")
+else:
+    print("Invalid Password")
 </pre>
         </div>
 
         <div class="snippet-box">
             <div class="snippet-header">
-                <h2>Py:Box , Scatter ,Scatter</h2>
+                <h2>Program 5 : Prediction of season by date</h2>
                 <button class="copy-btn">Copy</button>
             </div>
-            <pre class="snippet-content">import matplotlib.pyplot as plt
-
-box_data = [[10, 15, 10, 30, 20, 25], [12, 18, 14, 33, 22, 27]]
-
-x = [1, 2, 3, 4, 5]
-y = [5, 7, 6, 8, 7]
-
-labels = ['G1', 'G2', 'G3']
-men = [20, 34, 30]
-women = [25, 32, 34]
-
-plt.boxplot(box_data)
-plt.title('Box Plot')
-plt.show()
-
-plt.scatter(x, y)
-plt.title('Scatter Plot')
-plt.show()
-
-import numpy as np
-x_pos = np.arange(len(labels))
-
-plt.bar(x_pos, men, label='Men')
-plt.bar(x_pos, women, bottom=men, label='Women')
-plt.xticks(x_pos, labels)
-plt.title('Stacked Bar Plot')
-plt.legend()
-plt.show()
+            <pre class="snippet-content">def find_season(month, day):
+    if (month == 12 and day >= 21) or (1 <= month <= 2) or (month == 3 and day < 20):
+        return "Winter"
+    elif (month == 3 and day >= 20) or (4 <= month <= 5) or (month == 6 and day < 21):
+        return "Spring"
+    elif (month == 6 and day >= 21) or (7 <= month <= 8) or (month == 9 and day < 22):
+        return "Summer"
+    elif (month == 9 and day >= 22) or (10 <= month <= 11) or (month == 12 and day < 21):
+        return "Autumn"
+    else:
+        return "Invalid date"
+month = int(input("Enter month (1-12): "))
+day = int(input("Enter day (1-31): "))
+print("Season:", find_season(month, day))
 </pre>
         </div>
         
         <div class="snippet-box">
             <div class="snippet-header">
-                <h2>Py:PIE Chart</h2>
+                <h2>Program 6: Availablity of tuple element</h2>
                 <button class="copy-btn">Copy</button>
             </div>
-            <pre class="snippet-content">import matplotlib.pyplot as plt
-
-# Data for pie chart
-flavors = ['Chocolate', 'Vanilla', 'Strawberry', 'Mint', 'Cookie Dough', 'Pistachio']
-popularity = [30, 25, 15, 10, 12, 8]
-
-# Explode the largest slice (Chocolate)
-explode = [0.1, 0, 0, 0, 0, 0]
-
-# Colors for each slice
-colors =  ['lightcoral', 'lightskyblue', 'lightgreen', 'peachpuff', 'mediumpurple', 'pink']
-
-# Plot pie chart
-plt.figure(figsize=(8,8))
-plt.pie(popularity, labels=flavors, autopct='%1.1f%%', startangle=140,
-        explode=explode, colors=colors, shadow=True)
-
-plt.title("Favorite Flavors 🍦", fontsize=16)
-plt.axis('equal')  # Equal aspect ratio ensures pie is circular.
-
-plt.show()
+            <pre class="snippet-content">data = ((1, 2, 3), (4, 5, 6), (7, 8, 9))
+element = int(input("Enter element to search: "))
+found = any(element in t for t in data)
+if found:
+    print(f"Element {element} is present in the tuple of tuples.")
+else:
+    print(f"Element {element} is not present in the tuple of tuples.")
 </pre>
         </div>
 
         <div class="snippet-box">
             <div class="snippet-header">
-                <h2>AI : Implement Perception using Neural Networks</h2>
+                <h2>Program7 : Method Overloading</h2>
                 <button class="copy-btn">Copy</button>
             </div>
-            <pre class="snippet-content">
-   import numpy as np  #helps us do math with arrays
+            <pre class="snippet-content">class Shape:
+    def area(self): pass
+class Triangle(Shape):
+    def area(self): return 0.5*3*4
+class Square(Shape):
+    def area(self): return 4*4
+print(Triangle().area(), Square().area())
 
-class Perceptron:
-    def __init__(self, input_size, learning_rate=0.1, epochs=10):    #input_size = number of input features (e.g., 2 for AND gate inputs),learning_rate = how big a step we take when adjusting weights,epochs = number of times we run through all training data.
-        self.weights = np.zeros(input_size) #array of zeros for weights, if input_size is 2, weights = [0, 0].
-        self.bias = 0
-        self.lr = learning_rate
-        self.epochs = epochs
-    
-    def activation(self, x):
-        # Step activation function
-        return 1 if x >= 0 else 0         #If x (weighted sum + bias) is greater than or equal to 0, output 1, else output 0.
-    
-    def predict(self, x):
-        z = np.dot(x, self.weights) + self.bias
-        return self.activation(z)
-    
-    def train(self, X, y):        #X is the set of inputs (list of input vectors), y is the corresponding set of true labels (target outputs)
-        for _ in range(self.epochs):
-            for xi, target in zip(X, y):
-                output = self.predict(xi)
-                error = target - output
-                # Update weights and bias
-                self.weights += self.lr * error * xi
-                self.bias += self.lr * error
-
-# Training data for AND gate
-X = np.array([
-    [0, 0],
-    [0, 1],
-    [1, 0],
-    [1, 1]
-])
-
-y = np.array([0, 0, 0, 1])
-
-# Create perceptron object
-perceptron = Perceptron(input_size=2, learning_rate=0.1, epochs=10)
-
-# Train the perceptron
-perceptron.train(X, y)
-
-# Test perceptron
-print("Testing AND gate:")
-for x in X:
-    print(f"Input: {x} -> Output: {perceptron.predict(x)}")
+#output : 6.0 16
 </pre>
         </div>
 
         <div class="snippet-box">
             <div class="snippet-header">
-                <h2>AI: Maximize function using genetic algorithm</h2>
+                <h2>Program 8: Operator Overloadingg</h2>
                 <button class="copy-btn">Copy</button>
             </div>
-            <pre class="snippet-content">popSize=6; numGen=5; chromLength=5;
-population=randi([0 1],popSize,chromLength);
-powers=2.^(chromLength-1:-1:0);
-fitnessFunc=@(x) x.^2;
+            <pre class="snippet-content">class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    def __add__(self, other):
+        return Point(self.x + other.x, self.y + other.y)
 
-for gen=1:numGen
-    decodedPop=population*powers';
-    fitness=fitnessFunc(decodedPop);
-    [bestFit,bestIdx]=max(fitness);
-    fprintf('Gen %d: Best x=%d, fitness=%d\n', gen, decodedPop(bestIdx), bestFit);
-
-    cumProbs=cumsum(fitness/sum(fitness));
-    for i=1:popSize
-        population(i,:)=population(find(cumProbs>=rand,1),:);
-    end
-
-    for i=1:2:popSize-1
-        if rand<0.7
-            cp=randi([1 chromLength-1]);
-            population([i i+1],cp+1:end)=population([i+1 i],cp+1:end);
-        end
-    end
-
-    population=xor(population,rand(popSize,chromLength)<0.1);
-end </pre>
+    def __str__(self):
+        return f"({self.x}, {self.y})"
+p1 = Point(2, 3)
+p2 = Point(4, 5)
+p3 = p1 + p2
+print("Point 1:", p1)
+print("Point 2:", p2)
+print("Point 1 + Point 2 =", p3)
+</pre>
         </div>
 
         <div class="snippet-box">
             <div class="snippet-header">
-                <h2>AI: Set Operation in fuzzy sets</h2>
+                <h2>Program9: Inheritance</h2>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <pre class="snippet-content"># Base class
+class Animal:
+    def __init__(self, name):
+        self.name = name
+    def speak(self):
+        return "This animal makes a sound."
+# Derived class
+class Dog(Animal):
+    def speak(self):   # Overriding method
+        return f"{self.name} says Woof!"
+# Another derived class
+class Cat(Animal):
+    def speak(self):   # Overriding method
+        return f"{self.name} says Meow!"
+# ---- Testing ----
+d = Dog("Tommy")
+c = Cat("Kitty")
+print(d.speak())
+print(c.speak())
+</pre>
+        </div>
+
+        <div class="snippet-box">
+            <div class="snippet-header">
+                <h2>Program10:2d numpy manipulation</h2>
                 <button class="copy-btn">Copy</button>
             </div>
             <pre class="snippet-content">import numpy as np
-# Universe of discourse
-U = np.array([2, 3, 4, 5])
 
-# Membership values for sets A and B
-mu_A = np.array([1.0, 0.4, 0.6, 0.3])
-mu_B = np.array([0.3, 0.2, 0.6, 0.5])
+# Create a 2D NumPy array
+arr = np.array([[10, 20, 30],
+                [40, 50, 60],
+                [70, 80, 90],
+                [100, 110, 120],
+                [130, 140, 150]])
 
-# Fuzzy Union (max)
-mu_union = np.maximum(mu_A, mu_B)
+print("Original Array:\n", arr)
 
-# Fuzzy Intersection (min)
-mu_intersection = np.minimum(mu_A, mu_B)
+# (i) Get random set of rows
+random_rows = arr[np.random.choice(arr.shape[0], 2, replace=False)]
+print("\nRandom rows:\n", random_rows)
 
-# Complement
-mu_A_comp = 1 - mu_A
-mu_B_comp = 1 - mu_B
-
-# Print results
-print("Universe:", U)
-print("A:", mu_A)
-print("B:", mu_B)
-print("A ∪ B:", mu_union)
-print("A ∩ B:", mu_intersection)
-print("A complement:", mu_A_comp)
-print("B complement:", mu_B_comp)
-
-
+# (ii) Select a specific column (e.g., column index 1 → second column)
+col = arr[:, 1]
+print("\nSelected Column (index 1):\n", col)
 </pre>
         </div>
 
         <div class="snippet-box">
             <div class="snippet-header">
-                <h2>Data Manipulation of crisp & fuzzy sets</h2>
+                <h2>Octave 1: Matrix Calculation</h2>
                 <button class="copy-btn">Copy</button>
             </div>
-            <pre class="snippet-content"># Simple implementation of fuzzy and crisp relations
+            <pre class="snippet-content">% Matrix Operations in Octave
+A = [1 2; 3 4];   % 2x2 matrix
 
-# Define sets
-X = ['x1', 'x2', 'x3']
-Y = ['y1', 'y2', 'y3']
+disp("Original Matrix A:");
+disp(A);
 
-# Define a crisp relation (0 or 1 only)
-crisp_relation = [
-    [1, 0, 1],
-    [0, 1, 0],
-    [1, 0, 0]
-]
+disp("Multiply by scalar (2*A):");
+disp(2*A);
 
-# Define a fuzzy relation (values between 0 and 1)
-fuzzy_relation = [
-    [0.9, 0.1, 0.8],
-    [0.2, 0.7, 0.3],
-    [0.6, 0.4, 0.5]
-]
+disp("Transpose of A:");
+disp(A');
 
-# Function to print matrix nicely
-def print_matrix(matrix, title):
-    print(f"\n{title}")
-    for row in matrix:
-        print(["{:.2f}".format(val) for val in row])
+disp("Determinant of A:");
+disp(det(A));
 
-# Print both relations
-print_matrix(crisp_relation, "Crisp Relation")
-print_matrix(fuzzy_relation, "Fuzzy Relation")
+disp("Inverse of A:");
+disp(inv(A));</pre>
+        </div>
 
-# Optional: Fuzzy relation composition (fuzzy_relation o fuzzy_relation)
-def fuzzy_composition(R1, R2):
-    n = len(R1)
-    result = [[0 for _ in range(n)] for _ in range(n)]
+        <div class="snippet-box">
+            <div class="snippet-header">
+                <h2>Octave 2: Function Calculation</h2>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <pre class="snippet-content">% Mean, Median, Mode, SD
+data = [10, 20, 20, 30, 40, 50];
 
-    for i in range(n):
-        for j in range(n):
-            mins = [min(R1[i][k], R2[k][j]) for k in range(n)]
-            result[i][j] = max(mins)
-
-    return result
-
-# Compute and print fuzzy composition
-fuzzy_composed = fuzzy_composition(fuzzy_relation, crisp_relation)
-print_matrix(fuzzy_composed, "Fuzzy Relation Composition (R o R)")
+disp("Mean: "), disp(mean(data));
+disp("Median: "), disp(median(data));
+disp("Mode: "), disp(mode(data));
+disp("Standard Deviation: "), disp(std(data));
 </pre>
         </div>
 
         <div class="snippet-box">
             <div class="snippet-header">
-                <h2>Cloud: Case study on Twitter</h2>
+                <h2>Octave 3: String Manipulation</h2>
                 <button class="copy-btn">Copy</button>
             </div>
-            <pre class="snippet-content">import matplotlib.pyplot as plt
+            <pre class="snippet-content">% String commands in Octave
+str1 = "Hello";
+str2 = "World";
 
-# Raw user counts (not categorized by label anymore in a histogram)
-user_counts = [
-    10_000_000,    # Tech & Gadgets
-    20_000_000,    # Sports & Esports
-    30_000_000,    # Pop Culture & Entertainment
-    50_000,        # Specialized Academic Research
-    2_000,         # Local Govt Announcements
-    1_000          # Corporate Internal Policies
-]
+disp(strcat(str1, " ", str2));   % Concatenation
+disp(toupper(str1));            % Uppercase
+disp(tolower(str2));            % Lowercase
+disp(strcmp(str1, str2));       % Compare strings</pre>
+        </div>
 
-plt.figure(figsize=(10, 6))
-plt.hist(user_counts, bins=5, color='skyblue', edgecolor='black', log=True)
+        <div class="snippet-box">
+            <div class="snippet-header">
+                <h2>Octave 4: Plotting commands</h2>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <pre class="snippet-content">% Simple Octave plot example
 
-plt.xlabel('User Count (log scale bins)')
-plt.ylabel('Frequency')
-plt.title('Histogram of Estimated Twitter User Counts by Niche')
-plt.grid(True, which='both', linestyle='--', linewidth=0.5)
+% Sample data
+x = 0:0.1:2*pi;   % x values from 0 to 2π
+y = sin(x);       % y values as sine of x
 
-plt.tight_layout()
-plt.show()
+% Create a figure
+figure;
+
+% Plot the data
+plot(x, y, 'r', 'LineWidth', 2);  % red line, thickness 2
+
+% Add title and labels
+title('Sine Wave');
+xlabel('x values');
+ylabel('sin(x)');
+
+% Show grid
+grid on;
 </pre>
         </div>
 
         <div class="snippet-box">
             <div class="snippet-header">
-                <h2>Cloud: handling Unstructured data</h2>
+                <h2>Octave 5: Control Statements</h2>
                 <button class="copy-btn">Copy</button>
             </div>
-            <pre class="snippet-content"># # Install and load required packages
-install.packages(c("tm", "SnowballC", "wordcloud", "dplyr"))
-library(tm)
-library(SnowballC)
-library(wordcloud)
+            <pre class="snippet-content">% Sample Octave program to create a figure
 
-# Sample text
-texts <- c("I love R programming! #rstats", "Data Science is amazing.",
-           "Text mining in R is fun and powerful!", "Handling unstructured data is challenging but rewarding.")
+% Data
+x = 0:0.1:10;       % x values from 0 to 10
+y = x.^2;           % y values as square of x
 
-# Clean text and create a word frequency matrix
-corpus <- VCorpus(VectorSource(texts)) %>%
-  tm_map(content_transformer(tolower)) %>%
-  tm_map(removePunctuation) %>%
-  tm_map(removeNumbers) %>%
-  tm_map(removeWords, stopwords("english")) %>%
-  tm_map(stemDocument)
+% Create a figure
+figure;
 
-# Create DTM and plot word cloud
-dtm <- DocumentTermMatrix(corpus)
-wordcloud(names(sort(colSums(as.matrix(dtm)), decreasing = TRUE)),
-          max.words = 50, colors = brewer.pal(8, "Dark2"))</pre>
+% Plot the data
+plot(x, y, 'b', 'LineWidth', 2);  % blue line with thickness 2
+
+% Add title and labels
+title('Simple Plot of y = x^2');
+xlabel('x axis');
+ylabel('y axis');
+
+% Display grid
+grid on;
+</pre>
         </div>
 
         <div class="snippet-box">
             <div class="snippet-header">
-                <h2>Cloud: Storage Handling using R Map</h2>
+                <h2>Octave 6 : Vector functions</h2>
                 <button class="copy-btn">Copy</button>
             </div>
-            <pre class="snippet-content"># library(leaflet)
+            <pre class="snippet-content">% Sample vector
+v = [2, 4, 6, 8, 10];
 
-# Data with rounded latitude and longitude
-data <- data.frame(
-  name = c("New Delhi", "Mumbai", "Bengaluru", "Kolkata", "Chennai"),
-  lat = c(28.61, 19.08, 12.97, 22.57, 13.08),
-  lon = c(77.21, 72.88, 77.59, 88.36, 80.27)
-)
+% 1. Sum of all elements
+total = sum(v);
 
-print(
-  leaflet(data) %>%
-    addTiles() %>%
-    addMarkers(~lon, ~lat, popup = ~name)
-)</pre>
+% 2. Cumulative sum
+cum_sum = cumsum(v);
+
+% 3. Product of all elements
+total_prod = prod(v);
+
+% 4. Cumulative product
+cum_prod = cumprod(v);
+
+% 5. Difference between consecutive elements
+differences = diff(v);
+
+% 6. Mean (average) of elements
+average = mean(v);
+
+% 7. Standard deviation
+std_dev = std(v);
+
+% Display results
+fprintf('Vector: %s\n', mat2str(v));
+fprintf('Sum: %d\n', total);
+fprintf('Cumulative Sum: %s\n', mat2str(cum_sum));
+fprintf('Product: %d\n', total_prod);
+fprintf('Cumulative Product: %s\n', mat2str(cum_prod));
+fprintf('Difference: %s\n', mat2str(differences));
+fprintf('Mean: %.2f\n', average);
+fprintf('Standard Deviation: %.2f\n', std_dev);
+</pre>
         </div>
 
-       
+    </div>
 
     <script>
         // --- JavaScript for Copy Functionality ---
@@ -496,3 +491,4 @@ print(
 
 </body>
 </html>
+```
